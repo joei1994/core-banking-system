@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "cd5730da-f625-4b90-aad5-9f67cad6a77d",
+		"name": "core-banking-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2454592",
+		"_collection_link": "https://cloudy-meteor-899161.postman.co/workspace/core-banking-system~6ec86758-b369-41bd-81fe-ef1e8abbbb3d/collection/2454592-cd5730da-f625-4b90-aad5-9f67cad6a77d?action=share&source=collection_link&creator=2454592"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "fetch Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"joe.j@example.com\",\n  \"password\": \"123456\",\n  \"pin\": 123456,\n  \"citizenId\": \"1909900435812\",\n  \"thaiName\": \"โจห์น\",\n  \"englishName\": \"joe\",\n  \"created_by\": \"5e88c9d4-7d3b-4e1d-88e7-1f514e7adfa2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/customers/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"joe.i@example.com\",\n    \"password\": \"123456\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/customers/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/login \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"email\": \"user@example.com\",\n    \"password\": \"yourPassword123\"\n  }'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4NjI3MmJjZS02MjIyLTQxZjItOTFiMS01OTM4MDIwYWZlYTEiLCJpYXQiOjE3NTMwNzcyMzksImV4cCI6MTc1MzA3OTAzOX0.Qkmd9hz94ilsEFA3onEr5NnaqFLVTk1K18zHCO7j7RQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sourceAccount\": \"06d2f340-4223-431d-95da-bcf7162ffbdc\",\n  \"targetAccount\": \"45a9b72d-71cc-4fad-bf6f-dd030adcce1b\",\n  \"amount\": 200.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/customers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teller",
+			"item": [
+				{
+					"name": "create Teller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sommhai@domain.com\",\n    \"password\": \"plainTextPassword\",\n    \"thaiName\": \"สมหมาย\",\n    \"englishName\": \"sommhai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tellers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"dd22403b-3209-4896-95ba-db388fd3d5f8\",\n    \"balance\": 120000.00,\n    \"accountType\": \"SAVING\",\n    \"createdBy\": \"33d49f8a-14b8-46b2-9df8-5e58fc3cd7d2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tellers/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tellers",
+								"account"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/accounts \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"accountNumber\": \"1234567890\",\n    \"customerId\": \"b1d57f52-9832-4f3d-90e0-c3fa7f762edf\",\n    \"balance\": 1000.00,\n    \"accountType\": \"saving\",\n    \"createdBy\": \"17e3a537-cf76-4a1e-9456-18e9b5f2a9d3\"\n}'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "deposit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tellerId\": \"33d49f8a-14b8-46b2-9df8-5e58fc3cd7d2\",\n  \"accountId\": \"06d2f340-4223-431d-95da-bcf7162ffbdc\",\n  \"amount\": 5000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tellers/deposit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tellers",
+								"deposit"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/accounts \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"accountNumber\": \"1234567890\",\n    \"customerId\": \"b1d57f52-9832-4f3d-90e0-c3fa7f762edf\",\n    \"balance\": 1000.00,\n    \"accountType\": \"saving\",\n    \"createdBy\": \"17e3a537-cf76-4a1e-9456-18e9b5f2a9d3\"\n}'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tellerId\": \"33d49f8a-14b8-46b2-9df8-5e58fc3cd7d2\",\n  \"accountId\": \"06d2f340-4223-431d-95da-bcf7162ffbdc\",\n  \"amount\": 500.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tellers/withdraw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tellers",
+								"withdraw"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/accounts \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"accountNumber\": \"1234567890\",\n    \"customerId\": \"b1d57f52-9832-4f3d-90e0-c3fa7f762edf\",\n    \"balance\": 1000.00,\n    \"accountType\": \"saving\",\n    \"createdBy\": \"17e3a537-cf76-4a1e-9456-18e9b5f2a9d3\"\n}'\n"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
