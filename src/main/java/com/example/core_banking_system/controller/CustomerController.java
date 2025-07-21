@@ -1,6 +1,5 @@
 package com.example.core_banking_system.controller;
 
-import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
